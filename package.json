@@ -1,0 +1,25 @@
+{
+  "name": "ink-demo",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src",
+    "build": "babel src --out-dir dist",
+    "start": "node dist"
+  },
+  "dependencies": {
+    "ink": "^0.4.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/node": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "nodemon": "^1.17.3",
+    "prettier": "^1.12.0"
+  }
+}
