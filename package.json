@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec babel-node src",
+    "dev": "nodemon --no-colors --exec babel-node src",
     "build": "babel src --out-dir dist",
     "start": "node dist"
   },
