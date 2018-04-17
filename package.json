@@ -9,7 +9,8 @@
     "start": "node dist"
   },
   "dependencies": {
-    "ink": "^0.4.1"
+    "ink": "^0.4.1",
+    "ink-big-text": "^0.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.44",

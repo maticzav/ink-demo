@@ -1,31 +1,45 @@
-import { h, Component, render, Text } from 'ink'
+import { h, Component, render, Color } from 'ink'
+import Text from 'ink-big-text'
 
 class Counter extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      i: 10,
+      awesome: 9000,
+    }
+
+    this.handleKeyPress = this.handleKeyPress.bind(this)
+  }
+
+  componentDidMount() {
+    process.stdin.on('keypress', this.handleKeyPress)
+  }
+
+  componentWillUnmount() {
+    process.stdin.removeListener('keypress', this.handleKeyPress)
+  }
+
+  handleKeyPress(ch, key) {
+    const { awesome } = this.state
+
+    switch (key.name) {
+      case 'left':
+        this.setState({ awesome: awesome - 1 })
+        break
+      case 'right':
+        this.setState({ awesome: awesome + 1 })
+        break
+      default:
+        return
     }
   }
 
   render() {
-    return <Text blue>{this.state.i} tests passed</Text>
-  }
-
-  componentDidMount() {
-    this.timer = setInterval(() => {
-      this.setState({
-        i: this.state.i + 1,
-      })
-    }, 100)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer)
+    return <Text text={`Cool ${this.state.awesome}`} colors={['blue']} />
   }
 }
 
 // Render it in CLI
 
-render(<Counter />)
+render(h(Counter))
