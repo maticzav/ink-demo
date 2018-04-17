@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon --no-colors --exec babel-node src",
     "build": "babel src --out-dir dist",
-    "start": "node dist"
+    "start:hello": "node dist/hello.js",
+    "start:counter": "node dist/counter.js",
+    "start:todolist": "node dist/todolist.js"
   },
   "dependencies": {
     "ink": "^0.4.1",

@@ -1,5 +1,4 @@
-import { h, Component, render, Color } from 'ink'
-import Text from 'ink-big-text'
+import { h, Component, render, Text, Color } from 'ink'
 
 class Counter extends Component {
   constructor(props) {
@@ -36,7 +35,14 @@ class Counter extends Component {
   }
 
   render() {
-    return <Text text={`Cool ${this.state.awesome}`} colors={['blue']} />
+    return (
+      <span>
+        <div>
+          <Text>We are this awesome:</Text>
+        </div>
+        <Text blue>{this.state.awesome}</Text>
+      </span>
+    )
   }
 }
 
