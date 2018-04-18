@@ -25,6 +25,14 @@ render(h(Basic))
 * This example illustrates how to use Ink Component to handle state changes and react to keyboard input.
 
 ```jsx
+// Keyboard bindings
+componentDidMount() {
+  process.stdin.on('keypress', this.handleKeyPress)
+}
+
+componentWillUnmount() {
+  process.stdin.removeListener('keypress', this.handleKeyPress)
+}
 ```
 
 ## 3. Example (TODO List)
@@ -32,6 +40,22 @@ render(h(Basic))
 * This example shows the basic usage of Community written libraries which make Ink awesome!
 
 ```jsx
+import { h, Component, render, Text } from 'ink'
+import TextInput from 'ink-text-input'
+import SelectInput from 'ink-select-input'
+
+// Community components
+<TextInput
+  placeholder="..."
+  value={input}
+  onChange={this.handleInputChange}
+  onSubmit={this.handleAddTodo}
+/>
+<SelectInput
+  items={items}
+  onSelect={this.handleCompleteTodo}
+  focus={notEmpty(items) && empty(input)}
+/>
 ```
 
 ## License
