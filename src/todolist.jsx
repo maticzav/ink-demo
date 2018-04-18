@@ -73,7 +73,7 @@ class TodoList extends Component {
           focus={notEmpty(items) && empty(input)}
         />
         {empty(items) && (
-          <Text grey>Good dog! You've finished all of the todos!</Text>
+          <Text green>Good dog! You've finished all of the todos! 🎉</Text>
         )}
       </span>
     )
