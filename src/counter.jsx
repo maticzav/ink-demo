@@ -1,14 +1,8 @@
 import { h, Component, render, Text, Color } from 'ink'
 
 class Counter extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      awesome: 9000,
-    }
-
-    this.handleKeyPress = this.handleKeyPress.bind(this)
+  state = {
+    count: 9000,
   }
 
   componentDidMount() {
@@ -19,15 +13,15 @@ class Counter extends Component {
     process.stdin.removeListener('keypress', this.handleKeyPress)
   }
 
-  handleKeyPress(ch, key) {
-    const { awesome } = this.state
+  handleKeyPress = (ch, key) => {
+    const { count } = this.state
 
     switch (key.name) {
       case 'left':
-        this.setState({ awesome: awesome - 1 })
+        this.setState({ count: count - 1 })
         break
       case 'right':
-        this.setState({ awesome: awesome + 1 })
+        this.setState({ count: count + 1 })
         break
       default:
         return
@@ -40,7 +34,7 @@ class Counter extends Component {
         <div>
           <Text>We are this awesome:</Text>
         </div>
-        <Text blue>{this.state.awesome}</Text>
+        <Text blue>{this.state.count}</Text>
       </span>
     )
   }
@@ -48,4 +42,4 @@ class Counter extends Component {
 
 // Render it in CLI
 
-render(h(Counter))
+render(<Counter />)

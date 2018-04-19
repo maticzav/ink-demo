@@ -12,4 +12,4 @@ const HelloWorld = () => (
 )
 
 // Render
-render(h(HelloWorld))
+render(<HelloWorld />)

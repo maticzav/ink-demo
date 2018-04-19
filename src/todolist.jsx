@@ -2,45 +2,39 @@ import { h, Component, render, Text } from 'ink'
 import TextInput from 'ink-text-input'
 import SelectInput from 'ink-select-input'
 
-const empty = a => a.length === 0
+const isEmpty = a => a.length === 0
 const notEmpty = a => a.length !== 0
 
 class TodoList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      input: '',
-      todos: [],
-    }
-
-    this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleAddTodo = this.handleAddTodo.bind(this)
-    this.handleCompleteTodo = this.handleCompleteTodo.bind(this)
+  state = {
+    input: '',
+    todos: [],
   }
 
-  handleInputChange(input) {
+  handleInputChange = input => {
     this.setState({ input })
   }
 
-  handleAddTodo(description) {
-    const { input, todos } = this.state
+  handleAddTodo = description => {
+    const { input } = this.state
 
-    if (empty(input)) {
+    if (isEmpty(input)) {
       return
     }
 
-    const todo = {
-      id: todos.length,
-      description,
-    }
-
-    this.setState({
+    this.setState(({ todos }) => ({
       input: '',
-      todos: [todo, ...todos],
-    })
+      todos: [
+        {
+          id: todos.length,
+          description,
+        },
+        ...todos,
+      ],
+    }))
   }
 
-  handleCompleteTodo(item) {
+  handleCompleteTodo = item => {
     const { todos } = this.state
     const { value } = item
 
@@ -59,7 +53,7 @@ class TodoList extends Component {
     return (
       <span>
         <div>
-          <Text green>Add a todo: </Text>
+          <Text>Add a todo: </Text>
           <TextInput
             placeholder="..."
             value={input}
@@ -70,14 +64,12 @@ class TodoList extends Component {
         <SelectInput
           items={items}
           onSelect={this.handleCompleteTodo}
-          focus={notEmpty(items) && empty(input)}
+          focus={notEmpty(items) && isEmpty(input)}
         />
-        {empty(items) && (
-          <Text green>Good dog! You've finished all of the todos! 🎉</Text>
-        )}
+        {isEmpty(items) && <Text green>Very productive today! 🎉</Text>}
       </span>
     )
   }
 }
 
-render(h(TodoList))
+render(<TodoList />)
