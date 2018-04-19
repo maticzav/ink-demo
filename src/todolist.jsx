@@ -6,14 +6,20 @@ const isEmpty = a => a.length === 0
 const notEmpty = a => a.length !== 0
 
 class TodoList extends Component {
+  // Application state
+
   state = {
     input: '',
     todos: [],
   }
 
+  // Input value
+
   handleInputChange = input => {
     this.setState({ input })
   }
+
+  // Todos
 
   handleAddTodo = description => {
     const { input } = this.state
@@ -71,5 +77,7 @@ class TodoList extends Component {
     )
   }
 }
+
+// Render TodoList in the CLI
 
 render(<TodoList />)

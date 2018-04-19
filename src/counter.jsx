@@ -5,6 +5,8 @@ class Counter extends Component {
     count: 9000,
   }
 
+  // Wire up keyboard
+
   componentDidMount() {
     process.stdin.on('keypress', this.handleKeyPress)
   }
@@ -12,6 +14,8 @@ class Counter extends Component {
   componentWillUnmount() {
     process.stdin.removeListener('keypress', this.handleKeyPress)
   }
+
+  // Keypress logic
 
   handleKeyPress = (ch, key) => {
     const { count } = this.state
